@@ -1,5 +1,5 @@
-botSubDomain=ceobot.vsalis.eu
-botName=myTeamsRecBot
-projectPrefix=ceobot
-azureLocation=northeurope
-acrName=ceobotacr
+botSubDomain=transcription.cxunicorn.com
+botName=transcription-bot
+projectPrefix=cxtranscription
+azureLocation=westeurope
+acrName=cxtranscription-service
