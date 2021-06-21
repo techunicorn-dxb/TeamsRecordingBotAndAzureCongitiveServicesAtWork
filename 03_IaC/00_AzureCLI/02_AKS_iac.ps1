@@ -34,7 +34,7 @@ az aks create --resource-group $resourceGroupName --name $AKSClusterName --node-
 
 # Add the Windows Node pool
 Write-Output "About to create AKS windows pool: $resourceGroupName"
-az aks nodepool add --resource-group $resourceGroupName --cluster-name $AKSClusterName --os-type Windows --name scale --node-count 1 --node-vm-size Standard_DS3_v2
+az aks nodepool add --resource-group $resourceGroupName --cluster-name $AKSClusterName --os-type Windows --name scale --node-count 1 --node-vm-size Standard_DS2_v2
 
 # Create the Azure Container Registry to hold the bot's docker image (if not already there)
 Write-Output "About to create ACR: $acrName"
