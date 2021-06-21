@@ -2,4 +2,4 @@ botSubDomain=transcription.cxunicorn.com
 botName=transcription-bot
 projectPrefix=cxtranscription
 azureLocation=westeurope
-acrName=cxtranscription-service
+acrName=cxtranscriptionservice
