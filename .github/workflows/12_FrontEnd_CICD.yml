@@ -59,10 +59,10 @@ jobs:
         
     - name: 'Push to Azure Storage Static Site'
       working-directory: 02_FrontEnd
-      shell: pwsh # $projectPrefix +"StaticSite"
+      shell: pwsh # $projectPrefix +"site"
       run: |
-        az storage blob delete-batch -s '$web' --account-name ${{env.projectPrefix}}staticsite
+        az storage blob delete-batch -s '$web' --account-name ${{env.projectPrefix}}site
         pushd ./dist/web
-        az storage blob upload-batch --account-name ${{env.projectPrefix}}staticsite --source . --destination '$web'
+        az storage blob upload-batch --account-name ${{env.projectPrefix}}site --source . --destination '$web'
         pushd ../../package
-        az storage blob upload-batch --account-name ${{env.projectPrefix}}staticsite --source . --destination '$web'
+        az storage blob upload-batch --account-name ${{env.projectPrefix}}site --source . --destination '$web'
