@@ -16,7 +16,7 @@ $speechToTextName = $projectPrefix +"SpeechToText"
 
 # Functions related variables
 $functionsName = $projectPrefix + "middleware"
-$storageAccountName = $projectPrefix + 'funstorage'
+$storageAccountName = $projectPrefix + 'store'
 $functionsAppInsightsName = $functionsName + 'AI'
 $teamsTabAppInsightsName = $projectPrefix + 'teamsTabAI'
 
