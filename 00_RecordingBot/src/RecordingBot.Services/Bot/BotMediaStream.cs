@@ -188,7 +188,7 @@ namespace RecordingBot.Services.Bot
                     }
                 }
 
-                // await _mediaStream.AppendAudioBuffer(e.Buffer, this.participants);
+                _mediaStream.AppendAudioBuffer(e.Buffer, this.participants).Wait();
                 e.Buffer.Dispose();
             }
             catch (Exception ex)

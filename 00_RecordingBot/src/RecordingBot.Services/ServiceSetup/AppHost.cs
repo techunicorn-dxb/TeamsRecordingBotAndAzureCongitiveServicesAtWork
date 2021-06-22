@@ -135,7 +135,7 @@ namespace RecordingBot.Services.ServiceSetup
                 foreach (var url in ((AzureSettings)_settings).CallControlListeningUrls)
                 {
                     callStartOptions.Urls.Add(url);
-                    _logger.Info("Listening on: {url}", url);
+                    _logger.Info($"Listening on: {url}", url);
                 }
 
                 _callHttpServer = WebApp.Start(
