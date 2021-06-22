@@ -171,7 +171,7 @@ namespace RecordingBot.Services.Bot
         /// <param name="e">The audio media received arguments.</param>
         private void OnAudioMediaReceived(object sender, AudioMediaReceivedEventArgs e)
         {
-            this.GraphLogger.Info($"Received Audio: [AudioMediaReceivedEventArgs(Data=<{e.Buffer.Data.ToString()}>, Length={e.Buffer.Length}, Timestamp={e.Buffer.Timestamp})]");
+            // this.GraphLogger.Info($"Received Audio: [AudioMediaReceivedEventArgs(Data=<{e.Buffer.Data.ToString()}>, Length={e.Buffer.Length}, Timestamp={e.Buffer.Timestamp})]");
 
             try
             {
