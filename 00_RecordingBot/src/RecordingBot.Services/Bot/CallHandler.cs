@@ -93,7 +93,7 @@ namespace RecordingBot.Services.Bot
         /// <param name="eventPublisher">The event publisher.</param>
         public CallHandler(
             ICall statefulCall,
-            // string aTranscriptionLanguage, 
+            // string aTranscriptionLanguage,
             // string[] aTranslationLanguages,
             // IAzureSettings settings,
             // IEventPublisher eventPublisher,
