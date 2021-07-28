@@ -599,7 +599,7 @@ namespace RecordingBot.Services.Bot
                 await file.WriteLineAsync("ERROR "+err);
                 break;
             default:
-                await file.WriteLineAsync("idk")
+                await file.WriteLineAsync("idk");
                 break;
             }
                 }
