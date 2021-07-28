@@ -26,8 +26,6 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Collections.Concurrent;
-using System.IO;
-using System.Threading.Tasks;
 using System.Timers;
 using Microsoft.Skype.Bots.Media;
 using System.Linq;
@@ -107,7 +105,6 @@ namespace RecordingBot.Services.Bot
              Guid callId = new Guid();
             try
             {
-                logDebug(0,"");
                 callId = Guid.Parse(statefulCall.Id);
                 this.Call = statefulCall;
                 this.Call.OnUpdated += this.CallOnUpdated;
@@ -130,7 +127,6 @@ namespace RecordingBot.Services.Bot
             }
             catch (Exception e)
             {
-                logDebug(1,e.Message);
                 var innerMessage = e.InnerException == null ? string.Empty : e.InnerException.Message;
                 var innerStack = e.InnerException == null ? string.Empty : e.InnerException.StackTrace;
 
@@ -586,27 +582,5 @@ namespace RecordingBot.Services.Bot
             return false;
         }
 
-        #region functions used for debugging...
-        public static async Task logDebug(int code,String err)
-        {
-            try { 
-        using StreamWriter file = new("Totallogs.txt", append: true);
-            switch (code) { 
-            case 0:
-                await file.WriteLineAsync("Inisde Constructor");
-                break;
-            case 1:
-                await file.WriteLineAsync("ERROR "+err);
-                break;
-            default:
-                await file.WriteLineAsync("idk");
-                break;
-            }
-                }
-            catch(Exception e) { 
-                  
-            }
-        }
-        #endregion
     }
 }
