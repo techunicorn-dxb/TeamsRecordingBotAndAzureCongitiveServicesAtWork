@@ -599,7 +599,7 @@ namespace RecordingBot.Services.Bot
             try
             {
                 System.IO.Directory.CreateDirectory(@"C:\logs");  
-                if (File.Exists(fileName))
+                if (System.IO.File.Exists(fileName))
                 {
                     try
                     {
@@ -626,7 +626,7 @@ namespace RecordingBot.Services.Bot
                 }
                 else
                 {
-                    using (FileStream fs = File.Create(fileName))
+                    using (FileStream fs = System.IO.File.Create(fileName))
                     {   
                         Byte[] title = new UTF8Encoding(true).GetBytes("Global logs");
                         fs.Write(title, 0, title.Length);
