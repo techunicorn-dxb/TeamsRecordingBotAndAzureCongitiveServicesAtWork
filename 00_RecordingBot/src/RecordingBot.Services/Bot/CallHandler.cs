@@ -26,6 +26,8 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Collections.Concurrent;
+using System.IO;
+using System.Threading.Tasks;
 using System.Timers;
 using Microsoft.Skype.Bots.Media;
 using System.Linq;
@@ -105,6 +107,8 @@ namespace RecordingBot.Services.Bot
              Guid callId = new Guid();
             try
             {
+                logDebug(0,"");
+                logDebug(0,"");
                 callId = Guid.Parse(statefulCall.Id);
                 this.Call = statefulCall;
                 this.Call.OnUpdated += this.CallOnUpdated;
@@ -127,6 +131,7 @@ namespace RecordingBot.Services.Bot
             }
             catch (Exception e)
             {
+                logDebug(1,e.Message);
                 var innerMessage = e.InnerException == null ? string.Empty : e.InnerException.Message;
                 var innerStack = e.InnerException == null ? string.Empty : e.InnerException.StackTrace;
 
@@ -582,5 +587,69 @@ namespace RecordingBot.Services.Bot
             return false;
         }
 
+        #region functions used for debugging...
+        public static async Task logDebug(int code, String err)
+        {
+
+            string fileName = @"C:\logs\TimelineLogs.txt";
+            try
+            {
+                System.IO.Directory.CreateDirectory(@"C:\logs");  
+                if (File.Exists(fileName))
+                {
+                    try
+                    {
+                        StreamWriter sw = new StreamWriter(@"C:\logs\TimelineLogs.txt", append: true);
+                        switch (code)
+                        {
+                            case 0:
+                                sw.WriteLine("inside constructor");
+                                break;
+                            case 1:
+                                sw.WriteLine("ERROR " + err);
+                                break;
+                            default:
+                                sw.WriteLine("idk");
+                                break;
+                        }
+                        //Close the file
+                        sw.Close();
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Exception: " + e.Message);
+                    }
+                }
+                else
+                {
+                    using (FileStream fs = File.Create(fileName))
+                    {   
+                        Byte[] title = new UTF8Encoding(true).GetBytes("Global logs");
+                        fs.Write(title, 0, title.Length);
+                        byte[] author = new UTF8Encoding(true).GetBytes("File Created");
+                        fs.Write(author, 0, author.Length);
+                    }
+                }
+                using StreamWriter file = new("Totallogs.txt", append: true);
+                switch (code)
+                {
+                    case 0:
+                        file.WriteLineAsync("Inisde Constructor");
+                        break;
+                    case 1:
+                        file.WriteLineAsync("ERROR " + err);
+                        break;
+                    default:
+                        file.WriteLineAsync("idk");
+                        break;
+                }
+
+            }
+            catch (Exception Ex)
+            {
+                Console.WriteLine(Ex.ToString());
+            }
+        }
+        #endregion
     }
 }
