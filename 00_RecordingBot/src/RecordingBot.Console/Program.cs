@@ -16,6 +16,7 @@ using RecordingBot.Services.ServiceSetup;
 using System;
 using System.Diagnostics;
 using System.Reflection;
+using System.IO;
 
 namespace RecordingBot.Console
 {
@@ -55,6 +56,28 @@ namespace RecordingBot.Console
                 bot.StartServer();
 
                 System.Console.WriteLine("RecordingBot: running");
+                System.Console.WriteLine("/////////////////////");
+                System.Console.WriteLine("Creating Logs Folder");
+                string dir = @"C:\Logs";
+                // If directory does not exist, create it
+                if (!Directory.Exists(dir))
+                {
+                    Directory.CreateDirectory(dir);
+                }
+                else { 
+                     System.Console.WriteLine("Logs Folder already created");
+                }
+                System.Console.WriteLine("Creating Recordings Folder");
+                string dir = @"C:\TEst";
+                // If directory does not exist, create it
+                if (!Directory.Exists(dir))
+                {
+                    Directory.CreateDirectory(dir);
+                }
+                else { 
+                     System.Console.WriteLine("recorindings Folder already created");
+                }
+
             }
             catch (Exception e)
             {
