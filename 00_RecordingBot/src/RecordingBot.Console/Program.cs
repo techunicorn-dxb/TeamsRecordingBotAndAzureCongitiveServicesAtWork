@@ -68,7 +68,7 @@ namespace RecordingBot.Console
                      System.Console.WriteLine("Logs Folder already created");
                 }
                 System.Console.WriteLine("Creating Recordings Folder");
-                string dir = @"C:\TEst";
+                string dir = @"C:\recordings";
                 // If directory does not exist, create it
                 if (!Directory.Exists(dir))
                 {
