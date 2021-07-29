@@ -70,7 +70,7 @@ namespace RecordingBot.Services.Http.Controllers
         /// <param name="eventPublisher">The event publisher.</param>
         /// <param name="botService">The bot service.</param>
         /// <param name="settings">The settings.</param>
-        public JoinCallController(IGraphLogger logger, IEventPublisher eventPublisher, IBotService botService, IAzureSettings settings)
+        public JoinCallController(IGraphLogger logger, IEventPublisher eventPublisher, BotService botService, IAzureSettings settings)
         {
             _logger = logger;
             _botService = botService;
