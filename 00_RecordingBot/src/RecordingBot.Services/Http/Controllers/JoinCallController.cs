@@ -19,7 +19,6 @@ using RecordingBot.Model.Constants;
 using RecordingBot.Model.Models;
 using RecordingBot.Services.Contract;
 using RecordingBot.Services.ServiceSetup;
-using RecordingBot.Services.Bot;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -41,7 +40,7 @@ namespace RecordingBot.Services.Http.Controllers
         /// <summary>
         /// The bot service
         /// </summary>
-        private readonly BotService _botService;
+        private readonly IBotService _botService;
         /// <summary>
         /// The settings
         /// </summary>
@@ -59,7 +58,7 @@ namespace RecordingBot.Services.Http.Controllers
         {
             _logger = AppHost.AppHostInstance.Resolve<IGraphLogger>();
             _eventPublisher = AppHost.AppHostInstance.Resolve<IEventPublisher>();
-            _botService = AppHost.AppHostInstance.Resolve<BotService>();
+            _botService = AppHost.AppHostInstance.Resolve<IBotService>();
             _settings = AppHost.AppHostInstance.Resolve<IOptions<AzureSettings>>().Value;
         }
 
@@ -71,7 +70,7 @@ namespace RecordingBot.Services.Http.Controllers
         /// <param name="eventPublisher">The event publisher.</param>
         /// <param name="botService">The bot service.</param>
         /// <param name="settings">The settings.</param>
-        public JoinCallController(IGraphLogger logger, IEventPublisher eventPublisher, BotService botService, IAzureSettings settings)
+        public JoinCallController(IGraphLogger logger, IEventPublisher eventPublisher, IBotService botService, IAzureSettings settings)
         {
             _logger = logger;
             _botService = botService;
