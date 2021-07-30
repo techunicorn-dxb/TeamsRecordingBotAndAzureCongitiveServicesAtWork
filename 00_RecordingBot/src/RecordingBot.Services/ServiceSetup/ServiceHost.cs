@@ -7,7 +7,7 @@
 // Last Modified On : 09-03-2020
 // ***********************************************************************
 // <copyright file="ServiceHost.cs" company="Microsoft">
-//     Copyright ï¿½  2020
+//     Copyright ©  2020
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -48,14 +48,13 @@ namespace RecordingBot.Services.ServiceSetup
         /// <param name="services">The services.</param>
         /// <param name="configuration">The configuration.</param>
         /// <returns>ServiceHost.</returns>
-        public ServiceHost Configure(IServiceCollection services, Microsoft.Extensions.Configuration.IConfiguration configuration)
+        public ServiceHost Configure(IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton<IGraphLogger, GraphLogger>(_ => new GraphLogger("RecordingBot", redirectToTrace: true));
             services.Configure<AzureSettings>(configuration.GetSection(nameof(AzureSettings)));
             services.AddSingleton<IAzureSettings>(_ => _.GetRequiredService<IOptions<AzureSettings>>().Value);
 			services.AddSingleton<IEventPublisher, EventGridPublisher>(_ => new EventGridPublisher(_.GetRequiredService<IOptions<AzureSettings>>().Value));
-            //services.AddSingleton<IBotService, BotService>();
-            services.AddSingleton<BotService>();
+            services.AddSingleton<IBotService, BotService>();
 
             // Add Application Insights
             // https://docs.microsoft.com/en-us/azure/azure-monitor/app/worker-service
